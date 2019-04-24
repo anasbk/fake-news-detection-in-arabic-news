@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <meta content="description" name="description">
+  <meta name="google" content="notranslate" />
+  <meta content="Mashup templates have been developped by Orson.io team" name="author">
+
+  <!-- Disable tap highlight on IE -->
+  <meta name="msapplication-tap-highlight" content="no">
+  
+  <link href="./assets/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="./assets/favicon.ico" rel="icon">
+
+ 
+
+  <title>Synthesis</title>  
+
+<link href="{{ url_for('static', filename='css/main.a3f694c0.css') }}" rel="stylesheet">
+
+</head>
+
+<body>
+
+ <!-- Add your content of header -->
+<header>
+  <nav class="navbar  navbar-fixed-top navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle uarr collapsed" data-toggle="collapse" data-target="#navbar-collapse-uarr">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html" title="">
+          <img src="./assets/images/21601.png" class="navbar-logo-img" alt="" style="width: 109px;">
+        </a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="navbar-collapse-uarr">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="./index.html" title="" class="active">Home</a></li>
+          <li><a href="./about.html" title=""> About</a></li>
+          <li>
+            <p>
+              <a href="./index.html" class="btn btn-primary navbar-btn" title="">Try now</a>
+            </p>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+
+<div class="section-container">
+    <div class="container">
+        <div class="row section-container-spacer">
+            <div class="col-xs-12">
+                <div class="text-center">
+                    <h1>News</h1>
+                </div>
+                <div class="col-md-8 col-md-offset-2">
+                    <p dir="rtl">
+					
+					{{ data.input }}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="pricing-card pricing-primary">
+                    <h3>Long Short Term Memory</h3>
+                    <h6 class="price">88.5<span>{{ data.pred1 }}</span></h6>
+                </div>
+               
+
+            </div>
+            <div class="col-md-4">
+                <div class="pricing-card pricing-info">
+                    <h3>Convolution Neural Network</h3>
+                    <h6 class="price">86.2<span>{{ data.pred2 }}</span></h6>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="pricing-card pricing-secondary">
+                    <h3>Logistic Regression+tfidf</h3>
+                    <h6 class="price">85.9<span>{{ data.pred3 }}</span></h6>
+                </div>
+                
+            </div>
+        </div>
+		
+		
+		 <div class="row" style="margin-top:32px">
+            <div class="col-md-4">
+                <div class="pricing-card pricing-info" style="background-color:#361ece">
+                    <h3>Logistic Regression+Count</h3>
+                    <h6 class="price">84.7<span>{{ data.pred4 }}</span></h6>
+                </div>
+               
+
+            </div>
+            <div class="col-md-4">
+                <div class="pricing-card pricing-info" style="background-color:#361ece">
+                    <h3>Naive Bayes</h3>
+                    <h6 class="price">84.7<span>{{ data.pred5 }}</span></h6>
+                </div>
+            </div>
+     
+        </div>
+		
+		
+
+    </div>
+	
+</div>  
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function (event) {
+    navActivePage();
+  });
+</script>
+
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID 
+
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date(); a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+  ga('create', 'UA-XXXXX-X', 'auto');
+  ga('send', 'pageview');
+</script>
+
+--> 
+<script type="text/javascript" src="./main.41beeca9.js"></script></body>
+
+</html>

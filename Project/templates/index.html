@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <meta content="description" name="description">
+  <meta name="google" content="notranslate" />
+  <meta content="Mashup templates have been developped by Orson.io team" name="author">
+
+  <!-- Disable tap highlight on IE -->
+  <meta name="msapplication-tap-highlight" content="no">
+  
+  <link href="./assets/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="./assets/favicon.ico" rel="icon">
+  <link rel="icon" type="image/png" href="./assets/images/21601.png" />
+ 
+
+  <title>Home - Arabic Fake News Detection</title>  
+
+<link href="{{ url_for('static', filename='css/main.a3f694c0.css') }}" rel="stylesheet">
+
+<style>
+	.progress {
+	width: 150px;
+	height: 150px;
+	line-height: 150px;
+	background: none;
+	margin: 0 auto;
+	box-shadow: none;
+	position: relative;
+}
+
+.progress:after {
+	content: "";
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	border: 7px solid #eee;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.progress > span {
+	width: 50%;
+	height: 100%;
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	z-index: 1;
+}
+
+.progress .progress-left {
+	left: 0;
+}
+
+.progress .progress-bar {
+	width: 100%;
+	height: 100%;
+	background: none;
+	border-width: 7px;
+	border-style: solid;
+	position: absolute;
+	top: 0;
+	border-color: #ffb43e;
+}
+
+.progress .progress-left .progress-bar {
+	left: 100%;
+	border-top-right-radius: 75px;
+	border-bottom-right-radius: 75px;
+	border-left: 0;
+	-webkit-transform-origin: center left;
+	transform-origin: center left;
+}
+
+.progress .progress-right {
+	right: 0;
+}
+
+.progress .progress-right .progress-bar {
+	left: -100%;
+	border-top-left-radius: 75px;
+	border-bottom-left-radius: 75px;
+	border-right: 0;
+	-webkit-transform-origin: center right;
+	transform-origin: center right;
+}
+
+.progress .progress-value {
+	display: flex;
+	border-radius: 50%;
+	font-size: 24px;
+	text-align: center;
+	line-height: 20px;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	font-weight: 300;
+}
+
+.progress .progress-value div {
+	margin-top: 10px;
+}
+
+.progress .progress-value span {
+	font-size: 4px;
+	text-transform: uppercase;
+}
+
+/* This for loop creates the 	necessary css animation names 
+Due to the split circle of progress-left and progress right, we must use the animations on each side. 
+*/
+.progress[data-percentage="10"] .progress-right .progress-bar {
+	animation: loading-1 1.5s linear forwards;
+}
+
+.progress[data-percentage="10"] .progress-left .progress-bar {
+	animation: 0;
+}
+
+.progress[data-percentage="20"] .progress-right .progress-bar {
+	animation: loading-2 1.5s linear forwards;
+}
+
+.progress[data-percentage="20"] .progress-left .progress-bar {
+	animation: 0;
+}
+
+.progress[data-percentage="30"] .progress-right .progress-bar {
+	animation: loading-3 1.5s linear forwards;
+}
+
+.progress[data-percentage="30"] .progress-left .progress-bar {
+	animation: 0;
+}
+
+.progress[data-percentage="40"] .progress-right .progress-bar {
+	animation: loading-4 1.5s linear forwards;
+}
+
+.progress[data-percentage="40"] .progress-left .progress-bar {
+	animation: 0;
+}
+
+.progress[data-percentage="50"] .progress-right .progress-bar {
+	animation: loading-5 1.5s linear forwards;
+}
+
+.progress[data-percentage="50"] .progress-left .progress-bar {
+	animation: 0;
+}
+
+.progress[data-percentage="60"] .progress-right .progress-bar {
+	animation: loading-5 1.5s linear forwards;
+}
+
+.progress[data-percentage="60"] .progress-left .progress-bar {
+	animation: loading-1 1.5s linear forwards 1.5s;
+}
+
+.progress[data-percentage="70"] .progress-right .progress-bar {
+	animation: loading-5 1.5s linear forwards;
+}
+
+.progress[data-percentage="70"] .progress-left .progress-bar {
+	animation: loading-2 1.5s linear forwards 1.5s;
+}
+
+.progress[data-percentage="80"] .progress-right .progress-bar {
+	animation: loading-5 1.5s linear forwards;
+}
+
+.progress[data-percentage="80"] .progress-left .progress-bar {
+	animation: loading-3 1.5s linear forwards 1.5s;
+}
+
+.progress[data-percentage="90"] .progress-right .progress-bar {
+	animation: loading-5 1.5s linear forwards;
+}
+
+.progress[data-percentage="90"] .progress-left .progress-bar {
+	animation: loading-4 1.5s linear forwards 1.5s;
+}
+
+.progress[data-percentage="100"] .progress-right .progress-bar {
+	animation: loading-5 1.5s linear forwards;
+}
+
+.progress[data-percentage="100"] .progress-left .progress-bar {
+	animation: loading-5 1.5s linear forwards 1.5s;
+}
+
+@keyframes loading-1 {
+	0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+
+	100% {
+		-webkit-transform: rotate(36);
+		transform: rotate(36deg);
+	}
+}
+
+@keyframes loading-2 {
+	0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+
+	100% {
+		-webkit-transform: rotate(72);
+		transform: rotate(72deg);
+	}
+}
+
+@keyframes loading-3 {
+	0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+
+	100% {
+		-webkit-transform: rotate(108);
+		transform: rotate(108deg);
+	}
+}
+
+@keyframes loading-4 {
+	0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+
+	100% {
+		-webkit-transform: rotate(144);
+		transform: rotate(144deg);
+	}
+}
+
+@keyframes loading-5 {
+	0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+
+	100% {
+		-webkit-transform: rotate(180);
+		transform: rotate(180deg);
+	}
+}
+
+.progress {
+	margin-bottom: 1em;
+}
+	</style>
+	
+	
+
+
+</head>
+<body>
+
+ <!-- Add your content of header -->
+<header>
+  <nav class="navbar  navbar-fixed-top navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle uarr collapsed" data-toggle="collapse" data-target="#navbar-collapse-uarr">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" title="">
+          <img src="{{url_for('static', filename='img/21601.png')}}" class="navbar-logo-img" alt="" style="width: 109px;">
+        </a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="navbar-collapse-uarr">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="." title="" class="active">Home</a></li>
+          <li><a href="./about.html" title=""> About</a></li>
+          <li>
+            <p>
+              <a href="#news-input" class="btn btn-primary navbar-btn" title="">Try now</a>
+            </p>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+<div class="white-text-container background-image-container" style="background-image: url({{url_for('static', filename='img/young-businessman-sitting-on-bench.png')}})">
+    <div class="opacity"></div>
+    <div class="container">
+        <div class="row">
+           
+            <div class="col-md-6">
+                <h1>Arabic Fake News Detection</h1>
+                <p>Explore how artificial intelligence technologies, particularly machine learning and natural language processing, 
+				might be leveraged to combat the fake news problem. We believe that these AI technologies hold promise for significantly
+				automating parts of the procedure human fact checkers use today to determine if a story is real or a hoax.
+
+ </p>
+                 <a href="#news-input" title="" class="btn btn-lg btn-primary">Try Now</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="section-container border-section-container">
+    <div class="container">
+            <div class="row">
+                <div class="col-md-12 section-container-spacer">
+                    <div class="text-center">
+                        <h2>Best Model models</h2>
+                        <p>
+    
+    </p>
+					<h3>Long Short Term Memory</h3>
+
+
+    <p></p><div class="col-sm-6 col-md-6" style="
+    margin-left: 285px;
+">
+						<div class="progress" data-percentage="90">
+							<span class="progress-left">
+								<span class="progress-bar"></span>
+							</span>
+							<span class="progress-right">
+								<span class="progress-bar"></span>
+							</span>
+							<div class="progress-value">
+								<div>
+								
+								{{ data.acc1 }}%<br>
+								Accuracy
+								
+									
+								</div>
+							</div>
+						</div>
+					</div>
+
+<p></p>
+					
+                    </div>
+					
+				
+
+                </div>
+				
+                <div class="col-md-4">
+				
+                    
+                    <div class="text-center">
+                        <h3>Convolution Neural Network</h3>
+                    </div>
+                    <div>
+					
+					
+                        <p>
+</p>
+
+<p>
+
+</p><div class="col-sm-6 col-md-6" style="
+    margin-left: 80px;
+">
+						<div class="progress" data-percentage="90">
+							<span class="progress-left">
+								<span class="progress-bar"></span>
+							</span>
+							<span class="progress-right">
+								<span class="progress-bar"></span>
+							</span>
+							<div class="progress-value">
+								<div>
+								
+								{{ data.acc2 }}%<br>
+								Accuracy
+								
+									
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+<p></p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    
+                    <div class="text-center">
+                        <h3>Logistic Regression</h3>
+                    </div>
+                    <div>
+                        <p>
+
+</p><div class="col-sm-6 col-md-6" style="
+    margin-left: 80px;
+">
+						<div class="progress" data-percentage="80">
+							<span class="progress-left">
+								<span class="progress-bar"></span>
+							</span>
+							<span class="progress-right">
+								<span class="progress-bar"></span>
+							</span>
+							<div class="progress-value">
+								<div>
+								
+								{{ data.acc3 }}%<br>
+								Accuracy
+								
+									
+								</div>
+							</div>
+						</div>
+					</div>
+<p></p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    
+                    <div class="text-center">
+                        <h3>Naive Bayes</h3>
+                    </div>
+                    <div>
+                        <p>
+
+    </p><div class="col-sm-6 col-md-6" style="
+    margin-left: 80px;
+">
+						<div class="progress" data-percentage="80">
+							<span class="progress-left">
+								<span class="progress-bar"></span>
+							</span>
+							<span class="progress-right">
+								<span class="progress-bar"></span>
+							</span>
+							<div class="progress-value">
+								<div>
+								
+								{{ data.acc4 }}%<br>
+								Accuracy
+								
+									
+								</div>
+							</div>
+						</div>
+					</div>
+
+<p></p>
+                    </div>
+                </div>
+
+            </div>
+    </div>
+</div>
+
+<div class="section-container" name="news-input" id="news-input">
+    <div class="container">
+    
+    		<div class="row">
+                
+                <div class="col-md-12">
+                        <form action="/synthesis" class="reveal-content contact-form" method="POST">
+                            
+                            
+                            
+                            <div class="form-group">
+                                <textarea name="txt" id="txt" class="form-control" rows="3" placeholder="Enter your message" style="
+    height: 300px;
+"></textarea>
+                            </div>
+
+<p>
+</p>
+                            <button type="submit" class="btn btn-primary btn-lg" style="
+    margin-left: 450px;
+    width: 200px;
+">Check</button>
+                        </form>
+                    </div>
+                
+                
+    </div>
+           
+    </div>
+</div>
+
+
+
+
+ 
+
+
+
+
+
+
+<footer>
+    
+</footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function (event) {
+    navActivePage();
+  });
+</script>
+
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID 
+
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date(); a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+  ga('create', 'UA-XXXXX-X', 'auto');
+  ga('send', 'pageview');
+</script>
+
+-->
+
+<script type="text/javascript" src="./main.41beeca9.js"></script>
+
+</body>
+
+
+</html>
