@@ -12,23 +12,20 @@ from nltk.tokenize import word_tokenize
 from nltk.tokenize import sent_tokenize, word_tokenize
 from nltk.corpus import stopwords
 
+# Keras
+from keras.preprocessing.text import Tokenizer
+from keras.preprocessing.sequence import pad_sequences
+from keras.models import Sequential
+from keras.layers import Dense, Flatten, LSTM, Conv1D, MaxPooling1D, Dropout, Activation,SpatialDropout1D
+from keras.layers.embeddings import Embedding
 
-from sklearn.feature_extraction.text import CountVectorizer
+
+
+
+from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 
 def get_top_n_words(corpus, n=None):
-    """
-    List the top n words in a vocabulary according to occurrence in a text corpus.
 
-    get_top_n_words(["I love Python", "Python is a language programming", "Hello world", "I love the world"]) ->
-    [('python', 2),
-     ('world', 2),
-     ('love', 2),
-     ('hello', 1),
-     ('is', 1),
-     ('programming', 1),
-     ('the', 1),
-     ('language', 1)]
-    """
     vec = CountVectorizer().fit(corpus)
     bag_of_words = vec.transform(corpus)
     sum_words = bag_of_words.sum(axis=0)
@@ -40,18 +37,6 @@ def get_top_n_words(corpus, n=None):
 data = "إن القراء يقرؤون القرآن قراءة جميلة"
 stop_words = set(stopwords.words('arabic'))
 
-'''
-word_tokens = word_tokenize(data)
-
-print(word_tokens)
-
-filtered_sentence = [w for w in word_tokens if not w in stop_words]
-
-print(word_tokens)
-
-print(filtered_sentence)
-
-'''
 
 
 from nltk.stem import SnowballStemmer
@@ -115,15 +100,8 @@ print(df.shape)
 df.to_csv("dataset.csv", sep=',',index=False)
 
 '''
-from sklearn.feature_extraction.text import TfidfVectorizer
-
 trainDF = pd.read_csv("dataset.csv", delimiter=",", encoding='utf-8')
 
-print('shape')
-
-print('heeeeeeeeeeeeeeeeeeelllooooo')
-print(trainDF.loc[trainDF['label'] == 'trusted'].shape)
-print(trainDF.loc[trainDF['label'] == 'untrusted'].shape)
 
 df = pd.DataFrame([['إِنَّ الْقُرَّاْءَ يَقْرَؤُوْنَ الْقُرْآنَ قِرَاْءَةً جَمِيْلَــــــة', 'hello'],['الْقُرْآن heereَ','abcdef']], columns=['text', 'B'])
 
@@ -149,39 +127,16 @@ def normalizeDF(df):
 
     return df
 
-
-
-# Keras
-from keras.preprocessing.text import Tokenizer
-from keras.preprocessing.sequence import pad_sequences
-from keras.models import Sequential
-from keras.layers import Dense, Flatten, LSTM, Conv1D, MaxPooling1D, Dropout, Activation,SpatialDropout1D
-from keras.layers.embeddings import Embedding
-
-
-
-# print(trainDF.head())
-print('this is df')
 filtered_df = normalizeDF(trainDF)
 
 
 
 filtered_df.to_csv('to_train.csv', sep=',')
 
-print(type(filtered_df))
-
-print(filtered_df.info())
-
-print(filtered_df.head())
-print("filtered")
 
 
 Y = pd.get_dummies(trainDF['label']).values
 
-
-print(Y[0])
-
-# train_x, test_x, train_y, test_y = train_test_split(trainDF['text'], Y)
 train_x, test_x, train_y, test_y = train_test_split(trainDF['text'], trainDF['label'])
 
 print(train_x.shape, train_y.shape)
@@ -196,7 +151,6 @@ test_y = encoder.fit_transform(test_y)
 '''
 
 max_fatures = 5000
-
 
 # word level tf-idf
 tfidf_vect = TfidfVectorizer(analyzer='word')
@@ -231,8 +185,6 @@ tested_y = classifier.predict(xvalid_tfidf)
 
 # Making the Confusion Matrix
 
-print(tested_y.shape)
-print(test_y.shape)
 from sklearn.metrics import confusion_matrix
 cm = confusion_matrix(tested_y, test_y)
 
@@ -530,10 +482,6 @@ def normalize_arabic(text):
     text = re.sub("ة", "ه", text)
     text = re.sub("گ", "ك", text)
     return text
-
-print('مقتل الطفلة إخلاص يغضب المغاربة وهشتاغات تضامنية تجتاح مواقع التواصل الاجتماعي')
-
-print(normalize_arabic('مقتل الطفلة إخلاص يغضب المغاربة وهشتاغات تضامنية تجتاح مواقع التواصل الاجتماعي'))
 
 def remove_diacritics(text):
     text = re.sub(arabic_diacritics, '', text)

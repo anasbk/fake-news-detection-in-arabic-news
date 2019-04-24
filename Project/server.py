@@ -23,61 +23,8 @@ import pickle
 from keras.models import load_model
 
 
-'''
-import librosa
-import librosa.display
-import numpy as np
-import matplotlib.pyplot as plt
-import tensorflow as tf
-from matplotlib.pyplot import specgram
-
-
-import json
-from pprint import pprint
-
-import keras
-from keras.utils import np_utils
-from sklearn.preprocessing import LabelEncoder
-from keras.preprocessing import sequence
-from keras.models import Sequential
-from keras.layers import Dense, Embedding
-from keras.layers import LSTM
-from keras.preprocessing.text import Tokenizer
-from keras.preprocessing.sequence import pad_sequences
-from keras.utils import to_categorical
-from keras.layers import Input, Flatten, Dropout, Activation
-from keras.layers import Conv1D, MaxPooling1D, AveragePooling1D
-from keras.models import Model
-from keras.callbacks import ModelCheckpoint
-from sklearn.metrics import confusion_matrix
-from keras.utils import np_utils
-from sklearn.preprocessing import LabelEncoder
-from keras import regularizers
-
-import pandas as pd
-import os
-import glob 
-import csv
-from keras.models import load_model
-import warnings
-
-'''
-
-
 def get_top_n_words(corpus, n=None):
-    """
-    List the top n words in a vocabulary according to occurrence in a text corpus.
 
-    get_top_n_words(["I love Python", "Python is a language programming", "Hello world", "I love the world"]) ->
-    [('python', 2),
-     ('world', 2),
-     ('love', 2),
-     ('hello', 1),
-     ('is', 1),
-     ('programming', 1),
-     ('the', 1),
-     ('language', 1)]
-    """
     vec = CountVectorizer().fit(corpus)
     bag_of_words = vec.transform(corpus)
     sum_words = bag_of_words.sum(axis=0)
@@ -104,9 +51,6 @@ def remove_punctuations(text):
 
 def remove_repeating_char(text):
     return re.sub(r'(.)\1+', r'\1', text)
-
-
-
 
 
 def removeDiacretics(news_list):
@@ -176,6 +120,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
+
+    # these accuracies are real, writen directly just to make code easy
     data = {
         'acc1':88.54,
         'acc2':86.25,
@@ -194,22 +140,14 @@ def synthesis():
     empty_list = list()
     empty_list.append(news_input)
     
-    print(empty_list)
 
     filtered_df = normalizeDF(pd.DataFrame(empty_list,columns=['text']))
 
-    print("here")
-
-    print(filtered_df)
-
-    
     model1_name = "logistic_reg.pickle"
     model2_name = "nayve_bayes.pickle"
     model3_name = "random_forest.pickle"
     model4_name = "wembedlstm.h5"
     model5_name = "cnnmodel.h5"
-    
-    print('on est la mon frere')    
 
     loaded_model1 = pickle.load(open("models/"+model1_name, 'rb'))
     loaded_model2 = pickle.load(open("models/"+model2_name, 'rb'))
@@ -221,22 +159,9 @@ def synthesis():
     loaded_model5 = load_model("models/"+model5_name)
     
     tfidfvect = pickle.load(open("models/vectorizer.pickle","rb"))
-    '''
-    tokenizer = pickle.load(open("models/tokenizer.pickle","rb"))
 
-    print(filtered_df.values)
-
-    print(filtered_df.values.astype('U'))
-    '''
-    
     news_vector = tfidfvect.transform(filtered_df.values.astype('U')[0]).toarray()
-    '''
-    news_sequence = tokenizer.texts_to_sequence(filtered_df.values.astype('U')[0]).toarray()
-
-    data = pad_sequence(news_sequence, maxlen=50)
-    
-    print('loaded_model')
-    '''
+  
 
     data = {
         'input':news_input,
