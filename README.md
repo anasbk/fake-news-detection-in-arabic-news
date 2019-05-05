@@ -23,10 +23,10 @@ to run the Flask application, you need to execute the file server.py located in 
 ## Demo
 
 ### Accuracy
-![Alt text](imgs/img1.PNG?raw=true "Title")
+![Alt text](imgs/img1.png?raw=true "Title")
 
 ### Output
-![Alt text](imgs/img2.PNG?raw=true "Title")
+![Alt text](imgs/img2.png?raw=true "Title")
 
 ## License
 
