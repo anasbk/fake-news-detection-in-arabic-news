@@ -155,7 +155,7 @@ def synthesis():
 
     K.clear_session()
     
-    loaded_model4 = load_model("models/"+model4_name)
+    #loaded_model4 = load_model("models/"+model4_name)
     loaded_model5 = load_model("models/"+model5_name)
     
     tfidfvect = pickle.load(open("models/vectorizer.pickle","rb"))
