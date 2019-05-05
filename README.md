@@ -1,6 +1,6 @@
 # Fake News Detection In Arabic News
 
-Extracting freatures from audio files (dataset) using the MFCC representation and feed them to a deep network for emotion classification
+Comparison of different Machine Learning and Deep Learning algorthims applied in fake news detection problem.
 
 ## Getting Started
 
